@@ -196,8 +196,11 @@ export function useWebRTC({
 
   const handleOffer = useCallback(
     async (remotePeerId: string, remoteUsername: string, sdp: RTCSessionDescriptionInit) => {
+      // Track if this is a new connection (for screen share renegotiation)
+      const isNewConnection = !peerConnectionsRef.current.has(remotePeerId);
+
       // Create peer connection if it doesn't exist
-      if (!peerConnectionsRef.current.has(remotePeerId)) {
+      if (isNewConnection) {
         await createPeerConnection(remotePeerId, remoteUsername, false);
       } else {
         // Update username for existing peer (in case it was 'Unknown' before)
@@ -228,6 +231,27 @@ export function useWebRTC({
           to: remotePeerId,
           sdp: pc.localDescription!,
         });
+
+        // If this is a new connection and we're screen sharing, we need to renegotiate
+        // to send our screen share track (the initial offer/answer only negotiated their tracks)
+        if (isNewConnection && screenStreamRef.current) {
+          // Small delay to let the initial connection establish
+          setTimeout(async () => {
+            try {
+              const renegotiateOffer = await pc.createOffer();
+              await pc.setLocalDescription(renegotiateOffer);
+
+              sendSignaling({
+                type: 'offer',
+                to: remotePeerId,
+                sdp: pc.localDescription!,
+                username: usernameRef.current,
+              });
+            } catch (err) {
+              console.error('Error renegotiating for screen share:', err);
+            }
+          }, 500);
+        }
       } catch (err) {
         console.error('Error handling offer:', err);
       }

@@ -5,9 +5,19 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const assetsPath = path.join(__dirname, 'assets');
 
+// Determine which example to test based on TEST_EXAMPLE env var
+const testExample = process.env.TEST_EXAMPLE || 'group-video-call';
+
+const exampleConfigs: Record<string, { serverPort: number; devPort: number }> = {
+  'group-video-call': { serverPort: 3000, devPort: 5173 },
+  'expanded-video-call': { serverPort: 3001, devPort: 5174 },
+};
+
+const config = exampleConfigs[testExample] || exampleConfigs['group-video-call'];
+
 export default defineConfig({
   testDir: './',
-  testMatch: '**/*.test.ts',
+  testMatch: `${testExample}.test.ts`,
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -16,7 +26,7 @@ export default defineConfig({
   timeout: 60000,
 
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: `http://localhost:${config.devPort}`,
     trace: 'on-first-retry',
     video: 'retain-on-failure',
 
@@ -42,14 +52,14 @@ export default defineConfig({
   webServer: [
     {
       command: 'npm run server',
-      cwd: '../examples/group-video-call',
-      port: 3000,
+      cwd: `../examples/${testExample}`,
+      port: config.serverPort,
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: 'npm run dev',
-      cwd: '../examples/group-video-call',
-      port: 5173,
+      command: 'npm run dev -- --port ' + config.devPort,
+      cwd: `../examples/${testExample}`,
+      port: config.devPort,
       reuseExistingServer: !process.env.CI,
     },
   ],
