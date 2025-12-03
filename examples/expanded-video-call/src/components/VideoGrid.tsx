@@ -37,9 +37,9 @@ export function VideoGrid({
 
   if (hasScreenShare) {
     return (
-      <div className="flex-1 flex flex-col lg:flex-row gap-2 p-2 overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row gap-3 p-3 overflow-hidden">
         {/* Screen shares - take up most space */}
-        <div className="flex-1 flex flex-col gap-2 min-h-0">
+        <div className="flex-1 flex flex-col gap-3 min-h-0">
           {isLocalScreenSharing && localScreenStream && (
             <div className="flex-1 min-h-0">
               <VideoTile
@@ -64,7 +64,7 @@ export function VideoGrid({
         </div>
 
         {/* Camera views - sidebar on desktop, bottom on mobile */}
-        <div className="lg:w-72 flex lg:flex-col gap-2 overflow-x-auto lg:overflow-y-auto">
+        <div className="lg:w-72 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-0">
           {/* Local video */}
           <div className="w-40 lg:w-full flex-shrink-0 aspect-video">
             <VideoTile
@@ -91,9 +91,9 @@ export function VideoGrid({
 
   // Standard grid layout when no screen shares
   return (
-    <div className={`flex-1 grid ${getGridClasses()} gap-2 p-2 auto-rows-fr overflow-hidden`}>
+    <div className={`flex-1 grid ${getGridClasses()} gap-3 p-3 auto-rows-fr overflow-hidden`}>
       {/* Local video */}
-      <div className="aspect-video">
+      <div className="min-h-0">
         <VideoTile
           stream={localStream}
           username={localUsername}
@@ -104,7 +104,7 @@ export function VideoGrid({
 
       {/* Remote videos */}
       {remotePeers.map((peer) => (
-        <div key={peer.peerId} className="aspect-video">
+        <div key={peer.peerId} className="min-h-0">
           <VideoTile
             stream={peer.stream}
             username={peer.username}
