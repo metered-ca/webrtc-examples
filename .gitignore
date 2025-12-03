@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test outputs
+e2e/screenshots/
+e2e/videos/
+e2e/reports/
+
+# Build
+dist/
+build/
+
+# AI
+.claude
+Claude.md 
+METERED_DOCS.md
