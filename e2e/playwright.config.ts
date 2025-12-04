@@ -11,6 +11,7 @@ const testExample = process.env.TEST_EXAMPLE || 'group-video-call';
 const exampleConfigs: Record<string, { serverPort: number; devPort: number }> = {
   'group-video-call': { serverPort: 3000, devPort: 5173 },
   'expanded-video-call': { serverPort: 3001, devPort: 5174 },
+  'broadcast': { serverPort: 3002, devPort: 5175 },
 };
 
 const config = exampleConfigs[testExample] || exampleConfigs['group-video-call'];
