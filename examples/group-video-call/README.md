@@ -114,8 +114,6 @@ group-video-call/
 
 This example uses [Metered TURN Server](https://www.metered.ca/stun-turn/) for reliable connectivity. The TURN server relays media when direct peer-to-peer connections aren't possible (e.g., behind symmetric NATs or firewalls).
 
-STUN server: `stun:stun.metered.ca:80`
-
 ## Limitations
 
 - Mesh topology limits practical use to 3-4 participants
