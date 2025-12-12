@@ -127,13 +127,6 @@ webrtc-examples/
 - **Tailwind CSS** - Styling
 - **Playwright** - E2E testing
 
-## Contributing
-
-1. Each example should be fully self-contained
-2. Use plain WebRTC API only (no wrapper libraries like SimplePeer)
-3. Use Metered STUN/TURN servers exclusively
-4. Include E2E tests that verify remote streams actually arrive
-
 ## License
 
 MIT
