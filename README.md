@@ -140,6 +140,5 @@ MIT
 
 ## Resources
 
-- [Metered TURN Server Documentation](https://www.metered.ca/stun-turn/)
+- [Metered TURN Server Documentation](https://www.metered.ca/docs/turn-server-service/overview)
 - [WebRTC API (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
-- [WebRTC Samples](https://webrtc.github.io/samples/)
