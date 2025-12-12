@@ -13,6 +13,14 @@ A full-featured group video calling application using WebRTC mesh topology, Reac
 - Shareable meeting links
 - Responsive video grid layout
 
+## Screenshots
+
+### Group Video Call
+![Group Video Call](../../images/expanded_video_call.png)
+
+### Screen Sharing
+![Group Video Call with Screen Sharing](../../images/expanded_video_call_2.png)
+
 ## Prerequisites
 
 - Node.js 18+
