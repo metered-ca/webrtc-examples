@@ -1,4 +1,4 @@
-# WebRTC Examples
+# Open Source WebRTC Examples
 
 A collection of standalone WebRTC example applications demonstrating real-time video, audio, and data communication using the [Metered TURN Server](https://www.metered.ca/stun-turn/) service.
 
