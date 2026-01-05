@@ -1,4 +1,4 @@
-# One-to-Many Broadcast
+# Open Source WebRTC One-to-Many Broadcast Demo
 
 A live broadcasting application where one person streams video/audio to many viewers using WebRTC star topology, React, and TypeScript.
 
