@@ -1,4 +1,4 @@
-# Expanded Video Call
+# WebRTC Open Source Video Conferencing
 
 A full-featured group video calling application using WebRTC mesh topology, React, and TypeScript. Supports up to 6+ participants with screen sharing, real-time chat, and device selection.
 
