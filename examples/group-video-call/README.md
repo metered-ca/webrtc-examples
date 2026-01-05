@@ -1,4 +1,4 @@
-# Group Video Call
+# Open Source WebRTC Group Video Call Demo
 
 A simple group video call application supporting 3-4 participants using WebRTC mesh topology, React, and TypeScript.
 
