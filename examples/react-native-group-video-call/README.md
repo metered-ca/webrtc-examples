@@ -99,6 +99,8 @@ npm start
 
 ### Run on iOS
 
+> **First time?** Make sure you've completed the [iOS setup](#3-ios-setup) step (`pod install`) before building.
+
 In a third terminal:
 
 ```bash
@@ -125,6 +127,8 @@ npx react-native run-ios --device "Your iPhone Name"
 > **Note:** Physical devices require a valid Apple Developer signing configuration in Xcode. Open `ios/ReactNativeGroupVideoCall.xcworkspace` in Xcode and configure your signing team under **Signing & Capabilities**.
 
 ### Run on Android
+
+> **First time?** Make sure you have Android Studio installed and `ANDROID_HOME` set. See the [Android setup](#4-android-setup) section.
 
 Make sure you have an Android emulator running or a physical device connected, then in a third terminal:
 
