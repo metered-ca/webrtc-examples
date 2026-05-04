@@ -9,6 +9,7 @@ A collection of standalone WebRTC example applications demonstrating real-time v
 | [group-video-call](examples/group-video-call) | Simple group video call with up to 4 participants | Mesh | HTML/CSS/JS |
 | [expanded-video-call](examples/expanded-video-call) | Full-featured video call with screen sharing, chat, and device selection | Mesh | React, TypeScript, Tailwind |
 | [broadcast](examples/broadcast) | One-to-many live broadcast where one person streams to many viewers | Star | React, TypeScript, Tailwind |
+| [react-native-group-video-call](examples/react-native-group-video-call) | Group video call for iOS and Android (3-4 participants) | Mesh | React Native, TypeScript |
 
 ## Getting Started
 
@@ -110,7 +111,8 @@ webrtc-examples/
 ├── examples/
 │   ├── group-video-call/      # Simple mesh video call
 │   ├── expanded-video-call/   # Full-featured mesh video call
-│   └── broadcast/             # One-to-many broadcast
+│   ├── broadcast/             # One-to-many broadcast
+│   └── react-native-group-video-call/ # Mobile group video call
 ├── e2e/
 │   ├── *.test.ts              # Playwright E2E tests
 │   ├── assets/                # Mock media files for testing
@@ -123,6 +125,7 @@ webrtc-examples/
 - **WebRTC API** - Native browser APIs (`RTCPeerConnection`, `getUserMedia`)
 - **WebSocket** - Signaling server for connection establishment
 - **React** - UI framework (expanded examples)
+- **React Native** - Mobile framework (iOS/Android examples)
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Styling
 - **Playwright** - E2E testing
