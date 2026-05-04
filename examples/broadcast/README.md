@@ -12,6 +12,14 @@ A live broadcasting application where one person streams video/audio to many vie
 - Audio/video toggle for broadcaster
 - Mute/fullscreen controls for viewers
 
+## Screenshots
+
+### Broadcaster View
+![Broadcaster View](../../images/broadcast_broadcaster.png)
+
+### Viewer View
+![Viewer View](../../images/broadcast_viewer.png)
+
 ## Prerequisites
 
 - Node.js 18+

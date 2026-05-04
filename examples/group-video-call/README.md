@@ -10,6 +10,14 @@ A simple group video call application supporting 3-4 participants using WebRTC m
 - Enable/disable video
 - Room-based joining
 
+## Screenshots
+
+### Two-Peer Video Call
+![Two-Peer Video Call](../../images/group_video_call.png)
+
+### Three-Peer Video Call
+![Three-Peer Video Call](../../images/group_video_call_3_peers.png)
+
 ## Prerequisites
 
 - Node.js 18+

@@ -490,4 +490,68 @@ test.describe('Broadcast', () => {
 
   });
 
+  test.describe('Screenshots', () => {
+
+    test('should capture broadcaster view screenshot', async ({ browser }) => {
+      const context1 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+      const context2 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+
+      const broadcasterPage = await context1.newPage();
+      const viewerPage = await context2.newPage();
+
+      try {
+        // Set viewport for consistent screenshots
+        await broadcasterPage.setViewportSize({ width: 1280, height: 720 });
+
+        const broadcastId = await setupBroadcaster(broadcasterPage, 'Broadcaster');
+        await joinAsViewer(viewerPage, broadcastId, 'Viewer1');
+        await waitForBroadcastStream(viewerPage);
+
+        // Wait a moment for UI to stabilize
+        await broadcasterPage.waitForTimeout(1000);
+
+        // Take broadcaster screenshot
+        await broadcasterPage.screenshot({
+          path: '../images/broadcast_broadcaster.png',
+          fullPage: false,
+        });
+
+      } finally {
+        await context1.close();
+        await context2.close();
+      }
+    });
+
+    test('should capture viewer view screenshot', async ({ browser }) => {
+      const context1 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+      const context2 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+
+      const broadcasterPage = await context1.newPage();
+      const viewerPage = await context2.newPage();
+
+      try {
+        // Set viewport for consistent screenshots
+        await viewerPage.setViewportSize({ width: 1280, height: 720 });
+
+        const broadcastId = await setupBroadcaster(broadcasterPage, 'Broadcaster');
+        await joinAsViewer(viewerPage, broadcastId, 'Viewer1');
+        await waitForBroadcastStream(viewerPage);
+
+        // Wait a moment for UI to stabilize
+        await viewerPage.waitForTimeout(1000);
+
+        // Take viewer screenshot
+        await viewerPage.screenshot({
+          path: '../images/broadcast_viewer.png',
+          fullPage: false,
+        });
+
+      } finally {
+        await context1.close();
+        await context2.close();
+      }
+    });
+
+  });
+
 });

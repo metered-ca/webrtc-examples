@@ -639,4 +639,104 @@ test.describe('Group Video Call', () => {
 
   });
 
+  test.describe('Screenshots', () => {
+
+    test('should capture two-peer video call screenshot', async ({ browser }) => {
+      const roomName = generateRoomName('screenshot-two-peers');
+
+      const context1 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+      const context2 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+
+      const page1 = await context1.newPage();
+      const page2 = await context2.newPage();
+
+      try {
+        // Set viewport for consistent screenshots
+        await page1.setViewportSize({ width: 1280, height: 720 });
+
+        // Peer 1 joins
+        await page1.goto('/');
+        await page1.fill('input[placeholder="Enter room name"]', roomName);
+        await page1.click('button:has-text("Join Room")');
+        await expect(page1.locator('.call-screen')).toBeVisible({ timeout: 10000 });
+
+        // Peer 2 joins
+        await page2.goto('/');
+        await page2.fill('input[placeholder="Enter room name"]', roomName);
+        await page2.click('button:has-text("Join Room")');
+        await expect(page2.locator('.call-screen')).toBeVisible({ timeout: 10000 });
+
+        // Wait for WebRTC connection
+        await waitForPeerConnection(page1, 2);
+        await waitForPeerConnection(page2, 2);
+
+        // Wait a moment for UI to stabilize
+        await page1.waitForTimeout(1000);
+
+        // Take screenshot
+        await page1.screenshot({
+          path: '../images/group_video_call.png',
+          fullPage: false,
+        });
+
+      } finally {
+        await context1.close();
+        await context2.close();
+      }
+    });
+
+    test('should capture three-peer video call screenshot', async ({ browser }) => {
+      const roomName = generateRoomName('screenshot-three-peers');
+
+      const context1 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+      const context2 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+      const context3 = await browser.newContext({ permissions: ['camera', 'microphone'] });
+
+      const page1 = await context1.newPage();
+      const page2 = await context2.newPage();
+      const page3 = await context3.newPage();
+
+      try {
+        // Set viewport for consistent screenshots
+        await page1.setViewportSize({ width: 1280, height: 720 });
+
+        // All three peers join
+        await page1.goto('/');
+        await page1.fill('input[placeholder="Enter room name"]', roomName);
+        await page1.click('button:has-text("Join Room")');
+        await expect(page1.locator('.call-screen')).toBeVisible({ timeout: 10000 });
+
+        await page2.goto('/');
+        await page2.fill('input[placeholder="Enter room name"]', roomName);
+        await page2.click('button:has-text("Join Room")');
+        await expect(page2.locator('.call-screen')).toBeVisible({ timeout: 10000 });
+
+        await page3.goto('/');
+        await page3.fill('input[placeholder="Enter room name"]', roomName);
+        await page3.click('button:has-text("Join Room")');
+        await expect(page3.locator('.call-screen')).toBeVisible({ timeout: 10000 });
+
+        // Wait for all connections
+        await waitForPeerConnection(page1, 3);
+        await waitForPeerConnection(page2, 3);
+        await waitForPeerConnection(page3, 3);
+
+        // Wait a moment for UI to stabilize
+        await page1.waitForTimeout(1000);
+
+        // Take screenshot
+        await page1.screenshot({
+          path: '../images/group_video_call_3_peers.png',
+          fullPage: false,
+        });
+
+      } finally {
+        await context1.close();
+        await context2.close();
+        await context3.close();
+      }
+    });
+
+  });
+
 });
