@@ -1,0 +1,17 @@
+{
+  "name": "flutter-group-video-call-server",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "server": "npx tsx server/index.ts"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.8.3",
+    "ws": "^8.20.0"
+  },
+  "engines": {
+    "node": ">= 22.11.0"
+  }
+}

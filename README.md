@@ -10,6 +10,7 @@ A collection of standalone WebRTC example applications demonstrating real-time v
 | [expanded-video-call](examples/expanded-video-call) | Full-featured video call with screen sharing, chat, and device selection | Mesh | React, TypeScript, Tailwind |
 | [broadcast](examples/broadcast) | One-to-many live broadcast where one person streams to many viewers | Star | React, TypeScript, Tailwind |
 | [react-native-group-video-call](examples/react-native-group-video-call) | Group video call for iOS and Android (3-4 participants) | Mesh | React Native, TypeScript |
+| [flutter-group-video-call](examples/flutter-group-video-call) | Group video call for iOS and Android (3-4 participants) | Mesh | Flutter, Dart |
 
 ## Getting Started
 
@@ -112,7 +113,8 @@ webrtc-examples/
 │   ├── group-video-call/      # Simple mesh video call
 │   ├── expanded-video-call/   # Full-featured mesh video call
 │   ├── broadcast/             # One-to-many broadcast
-│   └── react-native-group-video-call/ # Mobile group video call
+│   ├── react-native-group-video-call/ # React Native mobile group video call
+│   └── flutter-group-video-call/      # Flutter mobile group video call
 ├── e2e/
 │   ├── *.test.ts              # Playwright E2E tests
 │   ├── assets/                # Mock media files for testing
@@ -126,6 +128,7 @@ webrtc-examples/
 - **WebSocket** - Signaling server for connection establishment
 - **React** - UI framework (expanded examples)
 - **React Native** - Mobile framework (iOS/Android examples)
+- **Flutter** - Mobile framework (iOS/Android examples)
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Styling
 - **Playwright** - E2E testing
